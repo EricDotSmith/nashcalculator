@@ -8,7 +8,6 @@ const Home: NextPage = () => {
 		<>
 			<Head>
 				<title>Nash Calculator</title>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
 			<Main />

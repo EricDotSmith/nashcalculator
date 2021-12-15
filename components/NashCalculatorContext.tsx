@@ -56,16 +56,16 @@ const NashCalculatorContextProvider: React.FC = (props) => {
 	const [stakingPeriodMonths, setStakingPeriodMonths] =
 		useState<string>("0");
 	const [layer2ExchangePair, setLayer2ExchangePair] =
-		useState<VolumeAndFeePair>({ volume: "0", fee: "0" });
+		useState<VolumeAndFeePair>({ volume: "0", fee: "0.01" });
 	const [earningsManagementPair, setEarningsManagementPair] =
-		useState<VolumeAndFeePair>({ volume: "0", fee: "0" });
+		useState<VolumeAndFeePair>({ volume: "0", fee: "0.01" });
 	const [fiatGatewayPair, setFiatGatewayPair] = useState<VolumeAndFeePair>({
 		volume: "0",
-		fee: "0",
+		fee: "0.01",
 	});
 	const [dexMarketPair, setDEXMarketPair] = useState<VolumeAndFeePair>({
 		volume: "0",
-		fee: "0",
+		fee: "0.01",
 	});
 	const [
 		layer2ExchangeProportionalShare,
