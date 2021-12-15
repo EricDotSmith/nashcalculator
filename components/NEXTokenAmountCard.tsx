@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { NashCalculatorContext } from "./NashCalculatorContext";
 
 const NEXTokenAmountCard: React.FC = () => {
-	const [tokenAmount, setTokenAmount] = useState<string>();
-	const [stakingDuration, setStakingDuration] = useState<string>();
+	const {
+		totalNEX,
+		setTotalNEX,
+		stakingPeriodMonths,
+		setStakingPeriodMonths,
+	} = useContext(NashCalculatorContext);
 
 	return (
 		<div className="w-full shadow rounded-md bg-gradient-to-r from-blue-700 to-blue-500 p-4 flex flex-row space-x-2">
@@ -16,9 +21,9 @@ const NEXTokenAmountCard: React.FC = () => {
 				<input
 					className="h-8  border-2 border-blue-200 rounded-md text-blue-900 font-bold p-1"
 					type="number"
-					value={tokenAmount}
+					value={totalNEX}
 					onChange={(e) => {
-						setTokenAmount(e.target.value);
+						setTotalNEX(e.target.value);
 					}}
 					placeholder="NEX"
 				/>
@@ -34,9 +39,9 @@ const NEXTokenAmountCard: React.FC = () => {
 				<input
 					className="h-8 border-2 border-blue-200 rounded-md text-blue-900 font-bold p-1"
 					type="number"
-					value={stakingDuration}
+					value={stakingPeriodMonths}
 					onChange={(e) => {
-						setStakingDuration(e.target.value);
+						setStakingPeriodMonths(e.target.value);
 					}}
 					placeholder="# Months"
 				/>

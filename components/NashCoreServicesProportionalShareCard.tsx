@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import ListCardGroup from "./ListCard/ListCardGroup";
 import ListCardItem from "./ListCard/ListCardItem";
+import { NashCalculatorContext } from "./NashCalculatorContext";
 
 interface CoreServicesSectionProps {
 	serviceName: string;
@@ -26,6 +27,10 @@ const CoreServicesSection: React.FC<CoreServicesSectionProps> = (props) => {
 };
 
 const NashCoreServicesProportionalShareCard: React.FC = () => {
+	const { layer2ExchangeProportionalShare } = useContext(
+		NashCalculatorContext
+	);
+
 	return (
 		<ListCardGroup
 			containerClassName="sm:w-32"
@@ -34,7 +39,9 @@ const NashCoreServicesProportionalShareCard: React.FC = () => {
 			<ListCardItem listItemClassName="justify-between flex flex-col items-center space-y-2">
 				<CoreServicesSection
 					serviceName="Layer-2 Exchange"
-					percentage={75}
+					percentage={Math.round(
+						layer2ExchangeProportionalShare * 100
+					)}
 				/>
 			</ListCardItem>
 			<ListCardItem listItemClassName="justify-between flex flex-col items-center space-y-2">
