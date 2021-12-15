@@ -5,4 +5,5 @@ Nash has just released their new tokonomics for their token, NEX. This calculato
 ## My Socials
 
 Telegram: @cire_eric
+
 Twitter: https://twitter.com/ericanadianLIVE
