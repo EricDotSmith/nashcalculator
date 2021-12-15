@@ -1,12 +1,17 @@
-interface ShareListItemProps {
+import React from "react";
+import ListCardGroup from "./ListCard/ListCardGroup";
+import ListCardItem from "./ListCard/ListCardItem";
+
+interface CoreServicesSectionProps {
 	serviceName: string;
 	percentage: number;
 }
 
-const ShareListItem: React.FC<ShareListItemProps> = (props) => {
+const CoreServicesSection: React.FC<CoreServicesSectionProps> = (props) => {
 	const { serviceName, percentage } = props;
+
 	return (
-		<li className="p-2 sm:p-4 w-full justify-between flex flex-col items-center space-y-2">
+		<>
 			<div className="text-sm text-center sm:text-md text-gray-100 font-bold">
 				{serviceName}
 			</div>
@@ -16,29 +21,41 @@ const ShareListItem: React.FC<ShareListItemProps> = (props) => {
 				</span>
 				<span className="text-md sm:text-lg">%</span>
 			</span>
-		</li>
+		</>
 	);
 };
 
 const NashCoreServicesProportionalShareCard: React.FC = () => {
 	return (
-		<div className="w-full sm:w-32 bg-gray-700 shadow overflow-hidden rounded-md">
-			<ul
-				role="list"
-				className="flex flex-row sm:flex-col divide-x sm:divide-x-0 sm:divide-y divide-gray-200"
-			>
-				<ShareListItem
+		<ListCardGroup
+			containerClassName="sm:w-32"
+			listClasses="sm:flex-col sm:divide-x-0 sm:divide-y "
+		>
+			<ListCardItem listItemClassName="justify-between flex flex-col items-center space-y-2">
+				<CoreServicesSection
 					serviceName="Layer-2 Exchange"
 					percentage={75}
 				/>
-				<ShareListItem
+			</ListCardItem>
+			<ListCardItem listItemClassName="justify-between flex flex-col items-center space-y-2">
+				<CoreServicesSection
 					serviceName="Earnings Management"
 					percentage={10}
 				/>
-				<ShareListItem serviceName="Fiat Gateway" percentage={10} />
-				<ShareListItem serviceName="DEX Market" percentage={10} />
-			</ul>
-		</div>
+			</ListCardItem>
+			<ListCardItem listItemClassName="justify-between flex flex-col items-center space-y-2">
+				<CoreServicesSection
+					serviceName="Fiat Gateway"
+					percentage={10}
+				/>
+			</ListCardItem>
+			<ListCardItem listItemClassName="justify-between flex flex-col items-center space-y-2">
+				<CoreServicesSection
+					serviceName="DEX Market"
+					percentage={10}
+				/>
+			</ListCardItem>
+		</ListCardGroup>
 	);
 };
 
