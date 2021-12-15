@@ -16,6 +16,8 @@ const Header: React.FC = () => {
 			</div>
 			<a
 				href="https://nashio.app.link/FCxunRYDZlb"
+				target="_blank"
+				rel={"noreferrer"}
 				className="inline-flex items-center m-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
 			>
 				Register for Nash

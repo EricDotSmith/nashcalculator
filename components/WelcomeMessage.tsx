@@ -21,12 +21,16 @@ const WelcomeMessage: React.FC = () => {
 						<div className="-mx-2 -my-1.5 flex">
 							<a
 								href="https://blog.nash.io/the-nex-token-and-the-nash-app/"
+								target="_blank"
+								rel={"noreferrer"}
 								className="bg-green-200 bg-opacity-30 px-2 py-1.5 rounded-md text-sm font-medium text-green-800 hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
 							>
 								See Tokenomics
 							</a>
 							<a
 								href="https://github.com/erics112/nashcalculator"
+								target="_blank"
+								rel={"noreferrer"}
 								className="ml-3 bg-green-200 bg-opacity-30  px-2 py-1.5 rounded-md text-sm font-medium text-green-800 hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
 							>
 								Contribute via GitHub
