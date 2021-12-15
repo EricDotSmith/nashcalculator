@@ -14,7 +14,8 @@ const WelcomeMessage: React.FC = () => {
 							their financial superapp. This is a
 							calculator put together by the community for
 							the community to help speculate on the
-							potential returns of Nash's core services.
+							potential returns of Nash&apos;s core
+							services.
 						</p>
 					</div>
 					<div className="mt-4">
