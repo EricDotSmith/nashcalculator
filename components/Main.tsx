@@ -9,7 +9,7 @@ import NashCalculatorContextProvider from "./NashCalculatorContext";
 const Main: React.FC = () => {
 	return (
 		<NashCalculatorContextProvider>
-			<div className="m-4 space-y-4">
+			<div className="flex flex-col mx-auto p-4 space-y-4 max-w-screen-xl">
 				<WelcomeMessage />
 				<div className="flex flex-col space-y-4 w-full">
 					<NEXTokenAmountCard />
