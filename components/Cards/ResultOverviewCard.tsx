@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { NashCalculatorContext } from "./NashCalculatorContext";
+import { NashCalculatorContext } from "../Context/NashCalculatorContext";
 
-const ResultOverview: React.FC = () => {
+const ResultOverviewCard: React.FC = () => {
 	const { totalProfit } = useContext(NashCalculatorContext);
 
 	return (
@@ -18,4 +18,4 @@ const ResultOverview: React.FC = () => {
 	);
 };
 
-export default ResultOverview;
+export default ResultOverviewCard;

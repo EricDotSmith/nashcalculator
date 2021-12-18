@@ -1,7 +1,7 @@
 import WelcomeMessage from "../components/WelcomeMessage";
-import ResultOverview from "../components/ResultOverview";
+import ResultOverviewCard from "./Cards/ResultOverviewCard";
 import React from "react";
-import NashCalculatorContextProvider from "./NashCalculatorContext";
+import NashCalculatorContextProvider from "./Context/NashCalculatorContext";
 
 const Main: React.FC = () => {
 	return (
@@ -10,11 +10,11 @@ const Main: React.FC = () => {
 				<WelcomeMessage />
 				<div className="flex flex-col space-y-4 w-full">
 					{" "}
-					<ResultOverview />
+					<ResultOverviewCard />
 				</div>
 
 				<div className="flex flex-col sm:flex-row w-full space-y-4 sm:space-y-0 sm:space-x-4">
-					<ResultOverview />
+					<ResultOverviewCard />
 				</div>
 			</div>
 		</NashCalculatorContextProvider>
