@@ -5,7 +5,7 @@ const ResultOverviewCard: React.FC = () => {
 	const { totalProfit } = useContext(NashCalculatorContext);
 
 	return (
-		<div className="w-full p-2 sm:p-4 sm:w-full bg-gray-700 shadow overflow-hidden rounded-md">
+		<div className="w-full p-2 sm:p-4 sm:w-full bg-gradient-to-r from-blue-700 to-blue-600 shadow shadow-gray-500/95 overflow-hidden rounded-md">
 			<div className="h-full w-full flex justify-center items-center text-white font-bold">
 				<div className="flex flex-col items-center text-lg sm:text-4xl">
 					<span>Total Return</span>
