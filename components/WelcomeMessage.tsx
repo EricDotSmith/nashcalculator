@@ -1,6 +1,6 @@
 const WelcomeMessage: React.FC = () => {
 	return (
-		<div className="rounded-md shadow bg-green-50 p-4 w-full">
+		<div className="rounded-md shadow bg-green-100 p-4 w-full">
 			<div className="flex">
 				<div className="flex-shrink-0"></div>
 				<div className="ml-3">
@@ -23,7 +23,7 @@ const WelcomeMessage: React.FC = () => {
 								href="https://blog.nash.io/the-nex-token-and-the-nash-app/"
 								target="_blank"
 								rel={"noreferrer"}
-								className="bg-green-200 bg-opacity-30 px-2 py-1.5 rounded-md text-sm font-medium text-green-800 hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
+								className="bg-green-300 bg-opacity-30 px-2 py-1.5 rounded-md text-sm font-medium text-green-800 hover:bg-opacity-60 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
 							>
 								See Tokenomics
 							</a>
@@ -31,7 +31,7 @@ const WelcomeMessage: React.FC = () => {
 								href="https://github.com/erics112/nashcalculator"
 								target="_blank"
 								rel={"noreferrer"}
-								className="ml-3 bg-green-200 bg-opacity-30  px-2 py-1.5 rounded-md text-sm font-medium text-green-800 hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
+								className="ml-3 bg-green-300 bg-opacity-30  px-2 py-1.5 rounded-md text-sm font-medium text-green-800 hover:bg-opacity-60 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
 							>
 								Contribute via GitHub
 							</a>

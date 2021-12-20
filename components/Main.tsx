@@ -1,25 +1,30 @@
 import WelcomeMessage from "../components/WelcomeMessage";
-import ResultOverview from "../components/ResultOverview";
-import NashCoreServicesProportionalShareCard from "../components/NashCoreServicesProportionalShareCard";
-import NEXTokenAmountCard from "../components/NEXTokenAmountCard";
+import ResultOverviewCard from "./Cards/ResultOverviewCard";
 import React from "react";
-import NashCoreServicesVolumeCard from "./NashCoreServicesVolumeCard";
-import NashCalculatorContextProvider from "./NashCalculatorContext";
+import NashCalculatorContextProvider from "./Context/NashCalculatorContext";
+import NashCoreServicesFeesCard from "./Cards/NashCoreServicesFeesCard";
+import NashCoreServicesVolumeCard from "./Cards/NashCoreServicesVolumeCard";
+import NexTokenCard from "./Cards/NexTokenCard";
+import ReferralsCard from "./Cards/ReferralsCard";
 
 const Main: React.FC = () => {
 	return (
 		<NashCalculatorContextProvider>
-			<div className="m-4 space-y-4">
+			<div className="flex flex-col mx-auto p-4 space-y-4 max-w-screen-xl">
 				<WelcomeMessage />
-				<div className="flex flex-col space-y-4 w-full">
-					<NEXTokenAmountCard />
+
+				<div className="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-4 sm:space-y-0 w-full">
+					<NashCoreServicesFeesCard />
 					<NashCoreServicesVolumeCard />
 				</div>
 
-				<div className="flex flex-col sm:flex-row w-full space-y-4 sm:space-y-0 sm:space-x-4">
-					<NashCoreServicesProportionalShareCard />
+				<div className="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-4 sm:space-y-0 w-full">
+					<NexTokenCard />
+					<ReferralsCard />
+				</div>
 
-					<ResultOverview />
+				<div className="flex flex-col sm:flex-row w-full space-y-4 sm:space-y-0 sm:space-x-4">
+					<ResultOverviewCard />
 				</div>
 			</div>
 		</NashCalculatorContextProvider>
