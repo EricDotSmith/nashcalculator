@@ -1,6 +1,23 @@
+import { useContext } from "react";
+import CurrencyInput from "react-currency-input-field";
+import { NashCalculatorContext } from "../Context/NashCalculatorContext";
 import CardContainer from "./CardContainer";
+import CardMessage from "./CardMessage";
 
 const NashCoreServicesVolumeCard: React.FC = () => {
+	const {
+		layer2ExchangePair,
+		setLayer2ExchangePair,
+		earningsManagementPair,
+		setEarningsManagementPair,
+		fiatGatewayPair,
+		setFiatGatewayPair,
+		dexMarketPair,
+		setDEXMarketPair,
+		volumePeriod,
+		setVolumePeriod,
+	} = useContext(NashCalculatorContext);
+
 	return (
 		<CardContainer
 			title="Nash Core Services"
@@ -11,7 +28,10 @@ const NashCoreServicesVolumeCard: React.FC = () => {
 						className="bg-sky-300/30 rounded-lg text-base text-blue-100 p-0.5"
 						name="volumePeriod"
 						id="volumePeriod"
-						defaultValue={"monthly"}
+						value={volumePeriod}
+						onChange={(e) => {
+							setVolumePeriod(e.target.value);
+						}}
 					>
 						<option value="daily">Daily</option>
 						<option value="monthly">Monthly</option>
@@ -35,62 +55,90 @@ const NashCoreServicesVolumeCard: React.FC = () => {
 				</>
 			}
 		>
-			<div className="flex flex-col space-y-4 justify-evenly h-5/6">
+			<CardMessage>
+				These volumes are completely speculative.
+			</CardMessage>
+			<div className="flex flex-col space-y-4 justify-evenly h-4/6">
+				{/* @here */}
 				<div className="flex items-center">
 					<div className="font-bold w-full text-blue-50">
 						Layer-2 Exchange
 					</div>
-					<div className="flex items-center space-x-1">
-						<span className="font-bold text-green-500">
-							$
-						</span>
-						<input
-							className="w-54 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
-							type="text"
-						/>
-					</div>
+					<CurrencyInput
+						id="layer-2-exchange-volume"
+						name="layer-2-exchange-volume-input"
+						placeholder="Please enter a number"
+						value={layer2ExchangePair.volume}
+						decimalsLimit={2}
+						prefix="$"
+						onValueChange={(value) => {
+							setLayer2ExchangePair((s) => ({
+								...s,
+								volume: value ?? "0",
+							}));
+						}}
+						className="w-54 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
+					/>
 				</div>
 				<div className="flex items-center">
 					<div className="font-bold w-full text-blue-50">
 						Earnings TVL
 					</div>
-					<div className="flex items-center space-x-1">
-						<span className="font-bold text-green-500">
-							$
-						</span>
-						<input
-							className="w-54 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
-							type="text"
-						/>
-					</div>
+					<CurrencyInput
+						id="earnings-tvl-volume"
+						name="earnings-tvl-volume-input"
+						placeholder="Please enter a number"
+						value={earningsManagementPair.volume}
+						decimalsLimit={2}
+						prefix="$"
+						onValueChange={(value) => {
+							setEarningsManagementPair((s) => ({
+								...s,
+								volume: value ?? "0",
+							}));
+						}}
+						className="w-54 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
+					/>
 				</div>
 				<div className="flex items-center">
 					<div className="font-bold w-full text-blue-50">
 						Fiat Gateway
 					</div>
-					<div className="flex items-center space-x-1">
-						<span className="font-bold text-green-500">
-							$
-						</span>
-						<input
-							className="w-54 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
-							type="text"
-						/>
-					</div>
+					<CurrencyInput
+						id="fiat-gateway-volume"
+						name="fiat-gateway-volume-input"
+						placeholder="Please enter a number"
+						value={fiatGatewayPair.volume}
+						decimalsLimit={2}
+						prefix="$"
+						onValueChange={(value) => {
+							setFiatGatewayPair((s) => ({
+								...s,
+								volume: value ?? "0",
+							}));
+						}}
+						className="w-54 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
+					/>
 				</div>
 				<div className="flex items-center">
 					<div className="font-bold w-full text-blue-50">
 						DEX Market
 					</div>
-					<div className="flex items-center space-x-1">
-						<span className="font-bold text-green-500">
-							$
-						</span>
-						<input
-							className="w-54 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
-							type="text"
-						/>
-					</div>
+					<CurrencyInput
+						id="dex-market-volume"
+						name="dex-market-volume-input"
+						placeholder="Please enter a number"
+						value={dexMarketPair.volume}
+						decimalsLimit={2}
+						prefix="$"
+						onValueChange={(value) => {
+							setDEXMarketPair((s) => ({
+								...s,
+								volume: value ?? "0",
+							}));
+						}}
+						className="w-54 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
+					/>
 				</div>
 			</div>
 		</CardContainer>

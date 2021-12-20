@@ -3,19 +3,33 @@ import { NashCalculatorContext } from "../Context/NashCalculatorContext";
 import CardContainer from "./CardContainer";
 
 const ResultOverviewCard: React.FC = () => {
-	const { totalProfit } = useContext(NashCalculatorContext);
+	const {
+		yieldPeriod,
+		setYieldPeriod,
+		totalNEX,
+		totalProfit,
+		layer2ExchangeProfit,
+		earningsManagementProfit,
+		fiatGatewayProfit,
+		dexMarketProfit,
+	} = useContext(NashCalculatorContext);
 
 	return (
 		<CardContainer
-			title="Holding 10,000 NEX"
+			title={`Holding ${Number.parseFloat(
+				totalNEX
+			).toLocaleString()} NEX`}
 			containerClasses="w-full"
 			subheaderContent={
 				<>
 					<select
 						className="bg-sky-300/30 rounded-lg text-base text-blue-100 p-0.5"
-						name="volumePeriod"
-						id="volumePeriod"
-						defaultValue={"monthly"}
+						name="yieldPeriod"
+						id="yieldPeriod"
+						value={yieldPeriod}
+						onChange={(e) => {
+							setYieldPeriod(e.target.value);
+						}}
 					>
 						<option value="daily">Daily</option>
 						<option value="monthly">Monthly</option>
@@ -24,7 +38,7 @@ const ResultOverviewCard: React.FC = () => {
 					<div className="flex space-x-1">
 						<div>Yields</div>
 						<span className="text-green-500 text-lg">
-							$120,300.00
+							${totalProfit.toLocaleString()}
 						</span>
 					</div>
 				</>
@@ -36,7 +50,7 @@ const ResultOverviewCard: React.FC = () => {
 						Layer-2 Exchange
 					</div>
 					<div className="text-green-500 text-xl">
-						$12,234.75
+						${layer2ExchangeProfit.toLocaleString()}
 					</div>
 				</div>
 				<div className="flex flex-col items-center justify-center text-center text-base font-medium text-blue-100">
@@ -44,7 +58,7 @@ const ResultOverviewCard: React.FC = () => {
 						Earnings Management
 					</div>
 					<div className="text-green-500 text-xl">
-						$12,234.75
+						${earningsManagementProfit.toLocaleString()}
 					</div>
 				</div>
 				<div className="flex flex-col items-center justify-center text-center text-base font-medium text-blue-100">
@@ -52,7 +66,7 @@ const ResultOverviewCard: React.FC = () => {
 						Fiat Gateway
 					</div>
 					<div className="text-green-500 text-xl">
-						$12,234.75
+						${fiatGatewayProfit.toLocaleString()}
 					</div>
 				</div>
 				<div className="flex flex-col items-center justify-center text-center text-base font-medium text-blue-100">
@@ -60,7 +74,7 @@ const ResultOverviewCard: React.FC = () => {
 						DEX Market
 					</div>
 					<div className="text-green-500 text-xl">
-						$12,234.75
+						${dexMarketProfit.toLocaleString()}
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,21 @@
+import { useContext } from "react";
+import CurrencyInput from "react-currency-input-field";
+import { NashCalculatorContext } from "../Context/NashCalculatorContext";
 import CardContainer from "./CardContainer";
+import CardMessage from "./CardMessage";
 
 const NashCoreServicesFeesCard: React.FC = () => {
+	const {
+		layer2ExchangePair,
+		setLayer2ExchangePair,
+		earningsManagementPair,
+		setEarningsManagementPair,
+		fiatGatewayPair,
+		setFiatGatewayPair,
+		dexMarketPair,
+		setDEXMarketPair,
+	} = useContext(NashCalculatorContext);
+
 	return (
 		<CardContainer
 			title="Nash Core Services"
@@ -25,58 +40,92 @@ const NashCoreServicesFeesCard: React.FC = () => {
 				</>
 			}
 		>
-			<div className="bg-green-100 rounded-md text-green-800 p-2 text-sm shadow-inner shadow-gray-300">
-				There are some assumptions being made for the fees here.
-				Please see the thing if this makes any sense
-			</div>
+			<CardMessage>
+				These fees are set to sensible defaults. However, keep in
+				mind that they may not represent the actual rates used by
+				Nash. For this reason these fields are editable.
+			</CardMessage>
+
 			<div className="flex flex-col space-y-4">
 				<div className="flex items-center">
 					<div className="font-bold w-full text-blue-50">
 						Layer-2 Exchange
 					</div>
-					<div className="flex items-center space-x-1">
-						<input
-							className="w-20 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
-							type="text"
-						/>
-						<span className="font-bold text-gray-200">%</span>
-					</div>
+					<CurrencyInput
+						id="layer-2-exchange-fee"
+						name="layer-2-exchange-fee-input"
+						placeholder="Please enter a number"
+						value={layer2ExchangePair.fee}
+						decimalsLimit={2}
+						suffix="%"
+						onValueChange={(value) => {
+							setLayer2ExchangePair((s) => ({
+								...s,
+								fee: value ?? "0",
+							}));
+						}}
+						className="w-20 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
+					/>
 				</div>
 				<div className="flex items-center">
 					<div className="font-bold w-full text-blue-50">
 						Earnings Management
 					</div>
-					<div className="flex items-center space-x-1">
-						<input
-							className="w-20 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
-							type="text"
-						/>
-						<span className="font-bold text-gray-200">%</span>
-					</div>
+					<CurrencyInput
+						id="earnings-management-fee"
+						name="earnings-management-fee-input"
+						placeholder="Please enter a number"
+						value={earningsManagementPair.fee}
+						decimalsLimit={2}
+						suffix="%"
+						onValueChange={(value) => {
+							setEarningsManagementPair((s) => ({
+								...s,
+								fee: value ?? "0",
+							}));
+						}}
+						className="w-20 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
+					/>
 				</div>
 				<div className="flex items-center">
 					<div className="font-bold w-full text-blue-50">
 						Fiat Gateway
 					</div>
-					<div className="flex items-center space-x-1">
-						<input
-							className="w-20 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
-							type="text"
-						/>
-						<span className="font-bold text-gray-200">%</span>
-					</div>
+					<CurrencyInput
+						id="fiat-gateway-fee"
+						name="fiat-gateway-fee-input"
+						placeholder="Please enter a number"
+						value={fiatGatewayPair.fee}
+						decimalsLimit={2}
+						suffix="%"
+						onValueChange={(value) => {
+							setFiatGatewayPair((s) => ({
+								...s,
+								fee: value ?? "0",
+							}));
+						}}
+						className="w-20 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
+					/>
 				</div>
 				<div className="flex items-center">
 					<div className="font-bold w-full text-blue-50">
 						DEX Market
 					</div>
-					<div className="flex items-center space-x-1">
-						<input
-							className="w-20 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
-							type="text"
-						/>
-						<span className="font-bold text-gray-200">%</span>
-					</div>
+					<CurrencyInput
+						id="dex-markets-fee"
+						name="dex-markets-fee-input"
+						placeholder="Please enter a number"
+						value={dexMarketPair.fee}
+						decimalsLimit={2}
+						suffix="%"
+						onValueChange={(value) => {
+							setDEXMarketPair((s) => ({
+								...s,
+								fee: value ?? "0",
+							}));
+						}}
+						className="w-20 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
+					/>
 				</div>
 			</div>
 		</CardContainer>
