@@ -49,6 +49,10 @@ const ResultOverviewCard: React.FC = () => {
 					<div className="font-bold text-blue-50">
 						Layer-2 Exchange
 					</div>
+					<div className="rounded-md bg-blue-500 max-w-max p-1.5 text-blue-50 text-xs">
+						Proportional Share:{" "}
+						<span className="text-yellow-300">75%</span>
+					</div>
 					<div className="text-green-500 text-xl">
 						${layer2ExchangeProfit.toLocaleString()}
 					</div>
@@ -56,6 +60,10 @@ const ResultOverviewCard: React.FC = () => {
 				<div className="flex flex-col items-center justify-center text-center text-base font-medium text-blue-100">
 					<div className="font-bold text-blue-50">
 						Earnings Management
+					</div>
+					<div className="rounded-md bg-blue-500 max-w-max p-1.5 text-blue-50 text-xs">
+						Proportional Share:{" "}
+						<span className="text-yellow-300">10%</span>
 					</div>
 					<div className="text-green-500 text-xl">
 						${earningsManagementProfit.toLocaleString()}
@@ -65,6 +73,10 @@ const ResultOverviewCard: React.FC = () => {
 					<div className="font-bold text-blue-50">
 						Fiat Gateway
 					</div>
+					<div className="rounded-md bg-blue-500 max-w-max p-1.5 text-blue-50 text-xs">
+						Proportional Share:{" "}
+						<span className="text-yellow-300">10%</span>
+					</div>
 					<div className="text-green-500 text-xl">
 						${fiatGatewayProfit.toLocaleString()}
 					</div>
@@ -72,6 +84,10 @@ const ResultOverviewCard: React.FC = () => {
 				<div className="flex flex-col items-center justify-center text-center text-base font-medium text-blue-100">
 					<div className="font-bold text-blue-50">
 						DEX Market
+					</div>
+					<div className="rounded-md bg-blue-500 max-w-max p-1.5 text-blue-50 text-xs">
+						Proportional Share:{" "}
+						<span className="text-yellow-300">10%</span>
 					</div>
 					<div className="text-green-500 text-xl">
 						${dexMarketProfit.toLocaleString()}
