@@ -116,8 +116,6 @@ const NashCalculatorContextProvider: React.FC = (props) => {
 	const [fiatGatewayProfit, setFiatGatewayProfit] = useState<number>(0);
 	const [dexMarketProfit, setDexMarketProfit] = useState<number>(0);
 
-	const resetAllFieldsToDefault = () => {};
-
 	// @here
 	// earnings tvl volume is weird, look into it when calculating total profit
 	const yearlyNashProfitFromServices = useMemo(() => {

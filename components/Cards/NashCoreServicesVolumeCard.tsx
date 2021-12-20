@@ -58,7 +58,7 @@ const NashCoreServicesVolumeCard: React.FC = () => {
 			<CardMessage>
 				These volumes are completely speculative.
 			</CardMessage>
-			<div className="flex flex-col space-y-4 justify-evenly h-4/6">
+			<div className="flex flex-col space-y-4 sm:space-y-0 justify-evenly h-4/6">
 				{/* @here */}
 				<div className="flex items-center">
 					<div className="font-bold w-full text-blue-50">
