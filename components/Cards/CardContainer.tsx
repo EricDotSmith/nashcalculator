@@ -14,9 +14,7 @@ const CardContainer: React.FC<CardContainerProps> = (props) => {
 		>
 			<div className="text-center text-blue-50 font-bold text-xl mb-2">
 				<div>{title}</div>
-				<div className="text-blue-300 flex items-center justify-center space-x-1">
-					{subheaderContent}
-				</div>
+				<div className="text-blue-300 flex items-center justify-center space-x-1">{subheaderContent}</div>
 			</div>
 			{children}
 		</div>

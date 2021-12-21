@@ -11,13 +11,9 @@ interface NashCalculatorContextInterface {
 	stakingPeriodMonths: string;
 	setStakingPeriodMonths: React.Dispatch<React.SetStateAction<string>>;
 	layer2ExchangePair: VolumeAndFeePair;
-	setLayer2ExchangePair: React.Dispatch<
-		React.SetStateAction<VolumeAndFeePair>
-	>;
+	setLayer2ExchangePair: React.Dispatch<React.SetStateAction<VolumeAndFeePair>>;
 	earningsManagementPair: VolumeAndFeePair;
-	setEarningsManagementPair: React.Dispatch<
-		React.SetStateAction<VolumeAndFeePair>
-	>;
+	setEarningsManagementPair: React.Dispatch<React.SetStateAction<VolumeAndFeePair>>;
 	fiatGatewayPair: VolumeAndFeePair;
 	setFiatGatewayPair: React.Dispatch<React.SetStateAction<VolumeAndFeePair>>;
 	dexMarketPair: VolumeAndFeePair;
@@ -33,30 +29,29 @@ interface NashCalculatorContextInterface {
 	dexMarketProfit: number;
 }
 
-export const NashCalculatorContext =
-	createContext<NashCalculatorContextInterface>({
-		totalNEX: "",
-		setTotalNEX: () => {},
-		layer2ExchangePair: { volume: "", fee: "" },
-		setLayer2ExchangePair: () => {},
-		stakingPeriodMonths: "",
-		setStakingPeriodMonths: () => {},
-		earningsManagementPair: { volume: "", fee: "" },
-		setEarningsManagementPair: () => {},
-		fiatGatewayPair: { volume: "", fee: "" },
-		setFiatGatewayPair: () => {},
-		dexMarketPair: { volume: "", fee: "" },
-		setDEXMarketPair: () => {},
-		totalProfit: 0,
-		volumePeriod: "",
-		setVolumePeriod: () => {},
-		yieldPeriod: "",
-		setYieldPeriod: () => {},
-		layer2ExchangeProfit: 0,
-		earningsManagementProfit: 0,
-		fiatGatewayProfit: 0,
-		dexMarketProfit: 0,
-	});
+export const NashCalculatorContext = createContext<NashCalculatorContextInterface>({
+	totalNEX: "",
+	setTotalNEX: () => {},
+	layer2ExchangePair: { volume: "", fee: "" },
+	setLayer2ExchangePair: () => {},
+	stakingPeriodMonths: "",
+	setStakingPeriodMonths: () => {},
+	earningsManagementPair: { volume: "", fee: "" },
+	setEarningsManagementPair: () => {},
+	fiatGatewayPair: { volume: "", fee: "" },
+	setFiatGatewayPair: () => {},
+	dexMarketPair: { volume: "", fee: "" },
+	setDEXMarketPair: () => {},
+	totalProfit: 0,
+	volumePeriod: "",
+	setVolumePeriod: () => {},
+	yieldPeriod: "",
+	setYieldPeriod: () => {},
+	layer2ExchangeProfit: 0,
+	earningsManagementProfit: 0,
+	fiatGatewayProfit: 0,
+	dexMarketProfit: 0,
+});
 
 const NEX_TOTAL_SUPPLY = 50000000;
 
@@ -84,18 +79,15 @@ enum NashCoreServicesRevenueSharePercentages {
 const NashCalculatorContextProvider: React.FC = (props) => {
 	const { children } = props;
 	const [totalNEX, setTotalNEX] = useState<string>("10000");
-	const [stakingPeriodMonths, setStakingPeriodMonths] =
-		useState<string>("0");
-	const [layer2ExchangePair, setLayer2ExchangePair] =
-		useState<VolumeAndFeePair>({
-			volume: ServiceVolumeDefaults.Layer2Exchange,
-			fee: ServiceFeePercentDefaults.Layer2Exchange,
-		});
-	const [earningsManagementPair, setEarningsManagementPair] =
-		useState<VolumeAndFeePair>({
-			volume: ServiceVolumeDefaults.Earnings,
-			fee: ServiceFeePercentDefaults.Earnings,
-		});
+	const [stakingPeriodMonths, setStakingPeriodMonths] = useState<string>("0");
+	const [layer2ExchangePair, setLayer2ExchangePair] = useState<VolumeAndFeePair>({
+		volume: ServiceVolumeDefaults.Layer2Exchange,
+		fee: ServiceFeePercentDefaults.Layer2Exchange,
+	});
+	const [earningsManagementPair, setEarningsManagementPair] = useState<VolumeAndFeePair>({
+		volume: ServiceVolumeDefaults.Earnings,
+		fee: ServiceFeePercentDefaults.Earnings,
+	});
 	const [fiatGatewayPair, setFiatGatewayPair] = useState<VolumeAndFeePair>({
 		volume: ServiceVolumeDefaults.FiatGateway,
 		fee: ServiceFeePercentDefaults.FiatGateway,
@@ -104,34 +96,26 @@ const NashCalculatorContextProvider: React.FC = (props) => {
 		volume: ServiceVolumeDefaults.DEXMarkets,
 		fee: ServiceFeePercentDefaults.DEXMarkets,
 	});
-
 	const [totalProfit, setTotalProfit] = useState<number>(0);
 	const [volumePeriod, setVolumePeriod] = useState<string>("daily");
 	const [yieldPeriod, setYieldPeriod] = useState<string>("monthly");
-
-	const [layer2ExchangeProfit, setLayer2ExchangeProfit] =
-		useState<number>(0);
-	const [earningsManagementProfit, setEarningsManagementProfit] =
-		useState<number>(0);
+	const [layer2ExchangeProfit, setLayer2ExchangeProfit] = useState<number>(0);
+	const [earningsManagementProfit, setEarningsManagementProfit] = useState<number>(0);
 	const [fiatGatewayProfit, setFiatGatewayProfit] = useState<number>(0);
 	const [dexMarketProfit, setDexMarketProfit] = useState<number>(0);
 
 	const yearlyNashProfitFromServices = useMemo(() => {
 		let layer2ExchangeNashProfitAfterFees =
-			Number.parseFloat(layer2ExchangePair.volume) *
-			(Number.parseFloat(layer2ExchangePair.fee) / 100);
+			Number.parseFloat(layer2ExchangePair.volume) * (Number.parseFloat(layer2ExchangePair.fee) / 100);
 
 		let earningsManagementNashProfitAfterFees =
-			Number.parseFloat(earningsManagementPair.volume) *
-			(Number.parseFloat(earningsManagementPair.fee) / 100);
+			Number.parseFloat(earningsManagementPair.volume) * (Number.parseFloat(earningsManagementPair.fee) / 100);
 
 		let fiatGatewayNashProfitAfterFees =
-			Number.parseFloat(fiatGatewayPair.volume) *
-			(Number.parseFloat(fiatGatewayPair.fee) / 100);
+			Number.parseFloat(fiatGatewayPair.volume) * (Number.parseFloat(fiatGatewayPair.fee) / 100);
 
 		let dexMarketNashProfitAfterFees =
-			Number.parseFloat(dexMarketPair.volume) *
-			(Number.parseFloat(dexMarketPair.fee) / 100);
+			Number.parseFloat(dexMarketPair.volume) * (Number.parseFloat(dexMarketPair.fee) / 100);
 
 		if (volumePeriod === "daily") {
 			layer2ExchangeNashProfitAfterFees *= 365;
@@ -151,17 +135,10 @@ const NashCalculatorContextProvider: React.FC = (props) => {
 			fiatGatewayNashProfitAfterFees,
 			dexMarketNashProfitAfterFees,
 		};
-	}, [
-		layer2ExchangePair,
-		earningsManagementPair,
-		fiatGatewayPair,
-		dexMarketPair,
-		volumePeriod,
-	]);
+	}, [layer2ExchangePair, earningsManagementPair, fiatGatewayPair, dexMarketPair, volumePeriod]);
 
 	useEffect(() => {
-		const totalOwnedNexToMaxSupply =
-			Number.parseFloat(totalNEX) / NEX_TOTAL_SUPPLY;
+		const totalOwnedNexToMaxSupply = Number.parseFloat(totalNEX) / NEX_TOTAL_SUPPLY;
 
 		let yourYearlyLayer2ExchangeProfitsShare =
 			yearlyNashProfitFromServices.layer2ExchangeNashProfitAfterFees *

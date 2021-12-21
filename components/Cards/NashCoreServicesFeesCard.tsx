@@ -41,16 +41,13 @@ const NashCoreServicesFeesCard: React.FC = () => {
 			}
 		>
 			<CardMessage>
-				These fees are set to sensible defaults. However, keep in
-				mind that they may not represent the actual rates used by
-				Nash. For this reason these fields are editable.
+				These fees are set to sensible defaults. However, keep in mind that they may not represent the actual rates used
+				by Nash. For this reason these fields are editable.
 			</CardMessage>
 
 			<div className="flex flex-col space-y-4">
 				<div className="flex items-center">
-					<div className="font-bold w-full text-blue-50">
-						Layer-2 Exchange
-					</div>
+					<div className="font-bold w-full text-blue-50">Layer-2 Exchange</div>
 					<CurrencyInput
 						id="layer-2-exchange-fee"
 						name="layer-2-exchange-fee-input"
@@ -68,9 +65,7 @@ const NashCoreServicesFeesCard: React.FC = () => {
 					/>
 				</div>
 				<div className="flex items-center">
-					<div className="font-bold w-full text-blue-50">
-						Earnings Management
-					</div>
+					<div className="font-bold w-full text-blue-50">Earnings Management</div>
 					<CurrencyInput
 						id="earnings-management-fee"
 						name="earnings-management-fee-input"
@@ -88,9 +83,7 @@ const NashCoreServicesFeesCard: React.FC = () => {
 					/>
 				</div>
 				<div className="flex items-center">
-					<div className="font-bold w-full text-blue-50">
-						Fiat Gateway
-					</div>
+					<div className="font-bold w-full text-blue-50">Fiat Gateway</div>
 					<CurrencyInput
 						id="fiat-gateway-fee"
 						name="fiat-gateway-fee-input"
@@ -108,9 +101,7 @@ const NashCoreServicesFeesCard: React.FC = () => {
 					/>
 				</div>
 				<div className="flex items-center">
-					<div className="font-bold w-full text-blue-50">
-						DEX Market
-					</div>
+					<div className="font-bold w-full text-blue-50">DEX Market</div>
 					<CurrencyInput
 						id="dex-markets-fee"
 						name="dex-markets-fee-input"

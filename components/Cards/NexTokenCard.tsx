@@ -10,15 +10,12 @@ const NexTokenCard: React.FC = () => {
 	return (
 		<CardContainer title="NEX Token" containerClasses="w-full sm:w-1/2">
 			<CardMessage>
-				For the total owned NEX, please include accumulated NEX
-				owned across Ethereum, Polygon and NEO chains.
+				For the total owned NEX, please include accumulated NEX owned across Ethereum, Polygon and NEO chains.
 			</CardMessage>
 
 			<div className="flex flex-col space-y-4">
 				<div className="flex items-center">
-					<div className="font-bold w-full text-blue-50">
-						Total Owned NEX
-					</div>
+					<div className="font-bold w-full text-blue-50">Total Owned NEX</div>
 					<CurrencyInput
 						id="total-nex"
 						name="total-nex-input"

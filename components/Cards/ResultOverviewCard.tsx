@@ -16,9 +16,7 @@ const ResultOverviewCard: React.FC = () => {
 
 	return (
 		<CardContainer
-			title={`Holding ${Number.parseFloat(
-				totalNEX
-			).toLocaleString()} NEX`}
+			title={`Holding ${Number.parseFloat(totalNEX).toLocaleString()} NEX`}
 			containerClasses="w-full"
 			subheaderContent={
 				<>
@@ -37,61 +35,39 @@ const ResultOverviewCard: React.FC = () => {
 					</select>
 					<div className="flex space-x-1">
 						<div>Yields</div>
-						<span className="text-green-500 text-lg">
-							${totalProfit.toLocaleString()}
-						</span>
+						<span className="text-green-500 text-lg">${totalProfit.toLocaleString()}</span>
 					</div>
 				</>
 			}
 		>
 			<div className="flex flex-col space-y-4 md:space-y-0 md:flex-row w-full justify-between">
 				<div className="flex flex-col items-center justify-center text-center text-base font-medium text-blue-100">
-					<div className="font-bold text-blue-50">
-						Layer-2 Exchange
-					</div>
+					<div className="font-bold text-blue-50">Layer-2 Exchange</div>
 					<div className="rounded-md bg-blue-500 max-w-max p-1.5 text-blue-50 text-xs">
-						Proportional Share:{" "}
-						<span className="text-yellow-300">75%</span>
+						Proportional Share: <span className="text-yellow-300">75%</span>
 					</div>
-					<div className="text-green-500 text-xl">
-						${layer2ExchangeProfit.toLocaleString()}
-					</div>
+					<div className="text-green-500 text-xl">${layer2ExchangeProfit.toLocaleString()}</div>
 				</div>
 				<div className="flex flex-col items-center justify-center text-center text-base font-medium text-blue-100">
-					<div className="font-bold text-blue-50">
-						Earnings Management
-					</div>
+					<div className="font-bold text-blue-50">Earnings Management</div>
 					<div className="rounded-md bg-blue-500 max-w-max p-1.5 text-blue-50 text-xs">
-						Proportional Share:{" "}
-						<span className="text-yellow-300">10%</span>
+						Proportional Share: <span className="text-yellow-300">10%</span>
 					</div>
-					<div className="text-green-500 text-xl">
-						${earningsManagementProfit.toLocaleString()}
-					</div>
+					<div className="text-green-500 text-xl">${earningsManagementProfit.toLocaleString()}</div>
 				</div>
 				<div className="flex flex-col items-center justify-center text-center text-base font-medium text-blue-100">
-					<div className="font-bold text-blue-50">
-						Fiat Gateway
-					</div>
+					<div className="font-bold text-blue-50">Fiat Gateway</div>
 					<div className="rounded-md bg-blue-500 max-w-max p-1.5 text-blue-50 text-xs">
-						Proportional Share:{" "}
-						<span className="text-yellow-300">10%</span>
+						Proportional Share: <span className="text-yellow-300">10%</span>
 					</div>
-					<div className="text-green-500 text-xl">
-						${fiatGatewayProfit.toLocaleString()}
-					</div>
+					<div className="text-green-500 text-xl">${fiatGatewayProfit.toLocaleString()}</div>
 				</div>
 				<div className="flex flex-col items-center justify-center text-center text-base font-medium text-blue-100">
-					<div className="font-bold text-blue-50">
-						DEX Market
-					</div>
+					<div className="font-bold text-blue-50">DEX Market</div>
 					<div className="rounded-md bg-blue-500 max-w-max p-1.5 text-blue-50 text-xs">
-						Proportional Share:{" "}
-						<span className="text-yellow-300">10%</span>
+						Proportional Share: <span className="text-yellow-300">10%</span>
 					</div>
-					<div className="text-green-500 text-xl">
-						${dexMarketProfit.toLocaleString()}
-					</div>
+					<div className="text-green-500 text-xl">${dexMarketProfit.toLocaleString()}</div>
 				</div>
 			</div>
 		</CardContainer>

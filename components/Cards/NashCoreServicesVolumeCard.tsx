@@ -55,14 +55,10 @@ const NashCoreServicesVolumeCard: React.FC = () => {
 				</>
 			}
 		>
-			<CardMessage>
-				These volumes are completely speculative.
-			</CardMessage>
+			<CardMessage>These volumes are completely speculative.</CardMessage>
 			<div className="flex flex-col space-y-4 sm:space-y-0 justify-evenly h-4/6">
 				<div className="flex items-center">
-					<div className="font-bold w-full text-blue-50">
-						Layer-2 Exchange
-					</div>
+					<div className="font-bold w-full text-blue-50">Layer-2 Exchange</div>
 					<CurrencyInput
 						id="layer-2-exchange-volume"
 						name="layer-2-exchange-volume-input"
@@ -80,9 +76,7 @@ const NashCoreServicesVolumeCard: React.FC = () => {
 					/>
 				</div>
 				<div className="flex items-center">
-					<div className="font-bold w-full text-blue-50">
-						Earnings TVL
-					</div>
+					<div className="font-bold w-full text-blue-50">Earnings TVL</div>
 					<CurrencyInput
 						id="earnings-tvl-volume"
 						name="earnings-tvl-volume-input"
@@ -100,9 +94,7 @@ const NashCoreServicesVolumeCard: React.FC = () => {
 					/>
 				</div>
 				<div className="flex items-center">
-					<div className="font-bold w-full text-blue-50">
-						Fiat Gateway
-					</div>
+					<div className="font-bold w-full text-blue-50">Fiat Gateway</div>
 					<CurrencyInput
 						id="fiat-gateway-volume"
 						name="fiat-gateway-volume-input"
@@ -120,9 +112,7 @@ const NashCoreServicesVolumeCard: React.FC = () => {
 					/>
 				</div>
 				<div className="flex items-center">
-					<div className="font-bold w-full text-blue-50">
-						DEX Market
-					</div>
+					<div className="font-bold w-full text-blue-50">DEX Market</div>
 					<CurrencyInput
 						id="dex-market-volume"
 						name="dex-market-volume-input"

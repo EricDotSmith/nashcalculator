@@ -4,17 +4,11 @@ const WelcomeMessage: React.FC = () => {
 			<div className="flex">
 				<div className="flex-shrink-0"></div>
 				<div className="ml-3">
-					<h3 className="text-sm font-medium text-green-800">
-						Welcome to the new Nash returns calculator!
-					</h3>
+					<h3 className="text-sm font-medium text-green-800">Welcome to the new Nash returns calculator!</h3>
 					<div className="mt-2 text-sm text-green-700">
 						<p>
-							Nash has just released their revamped
-							tokenomics, putting NEX at the center of
-							their financial superapp. This is a
-							calculator put together to help speculate on
-							the potential returns of Nash&apos;s core
-							services.
+							Nash has just released their revamped tokenomics, putting NEX at the center of their financial superapp.
+							This is a calculator put together to help speculate on the potential returns of Nash&apos;s core services.
 						</p>
 					</div>
 					<div className="mt-4">

@@ -4,15 +4,8 @@ const Header: React.FC = () => {
 	return (
 		<div className="sticky flex flex-row justify-between top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 border-b border-gray-900/10 bg-blue-50/75 supports-backdrop-blur:bg-white/95">
 			<div className="flex flex-col items-center justify-center px-2 text-lg">
-				<Image
-					src="/nash-logo.svg"
-					alt="Nash Logo"
-					width={80}
-					height={30}
-				/>
-				<div className="font-bold text-gray-600 italic">
-					Calculator
-				</div>
+				<Image src="/nash-logo.svg" alt="Nash Logo" width={80} height={30} />
+				<div className="font-bold text-gray-600 italic">Calculator</div>
 			</div>
 			<a
 				href="https://nashio.app.link/FCxunRYDZlb"
