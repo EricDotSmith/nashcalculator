@@ -6,7 +6,7 @@ const EarningsCard: React.FC = () => {
 	return (
 		<CardContainer title="Earnings Management" containerClasses="w-full sm:w-1/2">
 			<CardMessage>
-				Nash Earn is powered by a variety of DeFi protocols, with more to come. The defaults here aren[apos]t
+				Nash Earn is powered by a variety of DeFi protocols, with more to come. The defaults here aren&apos;t
 				representative of current data.
 			</CardMessage>
 			<div className="flex flex-col space-y-4">
