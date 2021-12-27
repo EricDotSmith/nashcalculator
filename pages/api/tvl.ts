@@ -1,3 +1,4 @@
+import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export type TVL_DATA = {
@@ -19,11 +20,11 @@ let isUpdating = false;
 
 async function updateCurrentResultFromExternalAPI() {
 	try {
-		const aaveMetadataResponse = await fetch("https://api.llama.fi/protocol/aave");
-		const anchorMetadataResponse = await fetch("https://api.llama.fi/protocol/anchor");
+		const aaveMetadataResponse = await axios.get("https://api.llama.fi/protocol/aave");
+		const anchorMetadataResponse = await axios.get("https://api.llama.fi/protocol/anchor");
 
-		const aaveMetadata = await aaveMetadataResponse.json();
-		const anchorMetadata = await anchorMetadataResponse.json();
+		const aaveMetadata = await aaveMetadataResponse.data;
+		const anchorMetadata = await anchorMetadataResponse.data;
 
 		const tvlAave = aaveMetadata.tvl[aaveMetadata.tvl.length - 1];
 		const tvlAnchor = anchorMetadata.tvl[anchorMetadata.tvl.length - 1];
@@ -45,6 +46,9 @@ async function updateCurrentResultFromExternalAPI() {
 const SECONDS_IN_A_MINUTE = 60;
 const SECONDS_IN_A_HOUR = 60 * SECONDS_IN_A_MINUTE;
 const SECONDS_IN_A_DAY = 24 * SECONDS_IN_A_HOUR;
+
+// Anchor APY
+// https://eth-api.anchorprotocol.com/api/v1/stablecoin_info/uusd
 
 export default async function handler(_req: NextApiRequest, res: NextApiResponse<TVL_DATA>) {
 	const requestTimestamp = new Date().valueOf();
