@@ -8,8 +8,6 @@ const NashCoreServicesVolumeCard: React.FC = () => {
 	const {
 		layer2ExchangePair,
 		setLayer2ExchangePair,
-		earningsManagementPair,
-		setEarningsManagementPair,
 		fiatGatewayPair,
 		setFiatGatewayPair,
 		dexMarketPair,
@@ -68,24 +66,6 @@ const NashCoreServicesVolumeCard: React.FC = () => {
 						prefix="$"
 						onValueChange={(value) => {
 							setLayer2ExchangePair((s) => ({
-								...s,
-								volume: value ?? "0",
-							}));
-						}}
-						className="w-54 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
-					/>
-				</div>
-				<div className="flex items-center">
-					<div className="font-bold w-full text-blue-50">Earnings TVL</div>
-					<CurrencyInput
-						id="earnings-tvl-volume"
-						name="earnings-tvl-volume-input"
-						placeholder="Please enter a number"
-						value={earningsManagementPair.volume}
-						decimalsLimit={2}
-						prefix="$"
-						onValueChange={(value) => {
-							setEarningsManagementPair((s) => ({
 								...s,
 								volume: value ?? "0",
 							}));

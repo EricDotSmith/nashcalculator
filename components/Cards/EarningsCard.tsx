@@ -4,7 +4,7 @@ import CardMessage from "./CardMessage";
 
 const EarningsCard: React.FC = () => {
 	return (
-		<CardContainer title="Earnings Management" containerClasses="w-full sm:w-1/2">
+		<CardContainer title="Nash Earn" subheaderContent="Yearly TVL / APY" containerClasses="w-full sm:w-1/2">
 			<CardMessage>
 				Nash Earn is powered by a variety of DeFi protocols, with more to come. The defaults here aren&apos;t
 				representative of current data.

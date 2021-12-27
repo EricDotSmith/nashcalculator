@@ -8,8 +8,8 @@ const NashCoreServicesFeesCard: React.FC = () => {
 	const {
 		layer2ExchangePair,
 		setLayer2ExchangePair,
-		earningsManagementPair,
-		setEarningsManagementPair,
+		earningsManagementFee,
+		setEarningsManagementFee,
 		fiatGatewayPair,
 		setFiatGatewayPair,
 		dexMarketPair,
@@ -70,14 +70,11 @@ const NashCoreServicesFeesCard: React.FC = () => {
 						id="earnings-management-fee"
 						name="earnings-management-fee-input"
 						placeholder="Please enter a number"
-						value={earningsManagementPair.fee}
+						value={earningsManagementFee}
 						decimalsLimit={2}
 						suffix="%"
 						onValueChange={(value) => {
-							setEarningsManagementPair((s) => ({
-								...s,
-								fee: value ?? "0",
-							}));
+							setEarningsManagementFee(value ?? "0");
 						}}
 						className="w-20 rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
 					/>
