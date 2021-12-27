@@ -10,6 +10,11 @@ const WelcomeMessage: React.FC = () => {
 							Nash has just released their revamped tokenomics, putting NEX at the center of their financial superapp.
 							This is a calculator put together to help speculate on the potential returns of Nash&apos;s core services.
 						</p>
+						<p className="font-medium text-sm text-green-800 mt-2">Upcoming</p>
+						<ul className="list-disc mt-2 pl-4">
+							<li>Referrals/Special Promotions cards</li>
+							<li>Pre-populate fields with live market data</li>
+						</ul>
 					</div>
 					<div className="mt-4">
 						<div className="-mx-2 -my-1.5 flex">
