@@ -5,6 +5,11 @@ export interface VolumeAndFeePair {
 	fee: string;
 }
 
+export interface EarnFeeAndTVLPair {
+	fee: string;
+	tvl: string;
+}
+
 interface NashCalculatorContextInterface {
 	totalNEX: string;
 	setTotalNEX: React.Dispatch<React.SetStateAction<string>>;
@@ -25,8 +30,10 @@ interface NashCalculatorContextInterface {
 	earningsManagementProfit: number;
 	fiatGatewayProfit: number;
 	dexMarketProfit: number;
-	earningsManagementFee: string;
-	setEarningsManagementFee: React.Dispatch<React.SetStateAction<string>>;
+	setEarnAavePair: React.Dispatch<React.SetStateAction<EarnFeeAndTVLPair>>;
+	earnAavePair: EarnFeeAndTVLPair;
+	setEarnAnchorPair: React.Dispatch<React.SetStateAction<EarnFeeAndTVLPair>>;
+	earnAnchorPair: EarnFeeAndTVLPair;
 }
 
 export const NashCalculatorContext = createContext<NashCalculatorContextInterface>({
@@ -40,7 +47,6 @@ export const NashCalculatorContext = createContext<NashCalculatorContextInterfac
 	setFiatGatewayPair: () => {},
 	dexMarketPair: { volume: "", fee: "" },
 	setDEXMarketPair: () => {},
-	setEarningsManagementFee: () => {},
 	totalProfit: 0,
 	volumePeriod: "",
 	setVolumePeriod: () => {},
@@ -50,7 +56,10 @@ export const NashCalculatorContext = createContext<NashCalculatorContextInterfac
 	earningsManagementProfit: 0,
 	fiatGatewayProfit: 0,
 	dexMarketProfit: 0,
-	earningsManagementFee: "0",
+	earnAnchorPair: { fee: "", tvl: "" },
+	setEarnAnchorPair: () => {},
+	earnAavePair: { fee: "", tvl: "" },
+	setEarnAavePair: () => {},
 });
 
 const NEX_TOTAL_SUPPLY = 50000000;
@@ -75,6 +84,13 @@ enum NashCoreServicesRevenueSharePercentages {
 	DEXMarkets = 0.1,
 }
 
+enum EarnFeeAndTVLDefaults {
+	AAVE_FEE = "6.5",
+	AAVE_TVL = "100000000",
+	ANCHOR_FEE = "6.5",
+	ANCHOR_TVL = "100000000",
+}
+
 const NashCalculatorContextProvider: React.FC = (props) => {
 	const { children } = props;
 	const [totalNEX, setTotalNEX] = useState<string>("10000");
@@ -91,7 +107,14 @@ const NashCalculatorContextProvider: React.FC = (props) => {
 		volume: ServiceVolumeDefaults.DEXMarkets,
 		fee: ServiceFeePercentDefaults.DEXMarkets,
 	});
-	const [earningsManagementFee, setEarningsManagementFee] = useState<string>(ServiceFeePercentDefaults.Earnings);
+	const [earnAnchorPair, setEarnAnchorPair] = useState<EarnFeeAndTVLPair>({
+		fee: EarnFeeAndTVLDefaults.ANCHOR_FEE,
+		tvl: EarnFeeAndTVLDefaults.ANCHOR_TVL,
+	});
+	const [earnAavePair, setEarnAavePair] = useState<EarnFeeAndTVLPair>({
+		fee: EarnFeeAndTVLDefaults.AAVE_FEE,
+		tvl: EarnFeeAndTVLDefaults.AAVE_TVL,
+	});
 	const [totalProfit, setTotalProfit] = useState<number>(0);
 	const [volumePeriod, setVolumePeriod] = useState<string>("daily");
 	const [yieldPeriod, setYieldPeriod] = useState<string>("monthly");
@@ -110,6 +133,12 @@ const NashCalculatorContextProvider: React.FC = (props) => {
 		let dexMarketNashProfitAfterFees =
 			Number.parseFloat(dexMarketPair.volume) * (Number.parseFloat(dexMarketPair.fee) / 100);
 
+		let annualEarningsAaveNashProfitAfterFees =
+			Number.parseFloat(earnAavePair.tvl) * (Number.parseFloat(earnAavePair.fee) / 100);
+
+		let annualEarningsAnchorNashProfitAfterFees =
+			Number.parseFloat(earnAnchorPair.tvl) * (Number.parseFloat(earnAnchorPair.fee) / 100);
+
 		if (volumePeriod === "daily") {
 			layer2ExchangeNashProfitAfterFees *= 365;
 			fiatGatewayNashProfitAfterFees *= 365;
@@ -124,8 +153,10 @@ const NashCalculatorContextProvider: React.FC = (props) => {
 			layer2ExchangeNashProfitAfterFees,
 			fiatGatewayNashProfitAfterFees,
 			dexMarketNashProfitAfterFees,
+			annualEarningsAaveNashProfitAfterFees,
+			annualEarningsAnchorNashProfitAfterFees,
 		};
-	}, [layer2ExchangePair, fiatGatewayPair, dexMarketPair, volumePeriod]);
+	}, [layer2ExchangePair, fiatGatewayPair, dexMarketPair, volumePeriod, earnAavePair, earnAnchorPair]);
 
 	useEffect(() => {
 		const totalOwnedNexToMaxSupply = Number.parseFloat(totalNEX) / NEX_TOTAL_SUPPLY;
@@ -145,23 +176,37 @@ const NashCalculatorContextProvider: React.FC = (props) => {
 			totalOwnedNexToMaxSupply *
 			NashCoreServicesRevenueSharePercentages.DEXMarkets;
 
+		let yourYearlyEarningsProfitsShare =
+			yearlyNashProfitFromServices.annualEarningsAaveNashProfitAfterFees *
+				totalOwnedNexToMaxSupply *
+				NashCoreServicesRevenueSharePercentages.Earnings +
+			yearlyNashProfitFromServices.annualEarningsAnchorNashProfitAfterFees *
+				totalOwnedNexToMaxSupply *
+				NashCoreServicesRevenueSharePercentages.Earnings;
+
 		if (yieldPeriod === "daily") {
 			yourYearlyLayer2ExchangeProfitsShare /= 365;
 			yourYearlyFiatGatewayProfitsShare /= 365;
 			yourYearlyDEXMarketsProfitsShare /= 365;
+			yourYearlyEarningsProfitsShare /= 365;
 		} else if (yieldPeriod === "monthly") {
 			yourYearlyLayer2ExchangeProfitsShare /= 12;
 			yourYearlyFiatGatewayProfitsShare /= 12;
 			yourYearlyDEXMarketsProfitsShare /= 12;
+			yourYearlyEarningsProfitsShare /= 12;
 		}
 
 		const yourTotalProfit =
-			yourYearlyLayer2ExchangeProfitsShare + yourYearlyFiatGatewayProfitsShare + yourYearlyDEXMarketsProfitsShare;
+			yourYearlyLayer2ExchangeProfitsShare +
+			yourYearlyFiatGatewayProfitsShare +
+			yourYearlyDEXMarketsProfitsShare +
+			yourYearlyEarningsProfitsShare;
 
 		setTotalProfit(yourTotalProfit);
 		setLayer2ExchangeProfit(yourYearlyLayer2ExchangeProfitsShare);
 		setFiatGatewayProfit(yourYearlyFiatGatewayProfitsShare);
 		setDexMarketProfit(yourYearlyDEXMarketsProfitsShare);
+		setEarningsManagementProfit(yourYearlyEarningsProfitsShare);
 	}, [
 		yieldPeriod,
 		volumePeriod,
@@ -194,8 +239,10 @@ const NashCalculatorContextProvider: React.FC = (props) => {
 				earningsManagementProfit,
 				fiatGatewayProfit,
 				dexMarketProfit,
-				earningsManagementFee,
-				setEarningsManagementFee,
+				earnAavePair,
+				setEarnAavePair,
+				earnAnchorPair,
+				setEarnAnchorPair,
 			}}
 		>
 			{children}

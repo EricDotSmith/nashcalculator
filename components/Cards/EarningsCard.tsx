@@ -2,13 +2,18 @@ import CurrencyInput from "react-currency-input-field";
 import CardContainer from "./CardContainer";
 import CardMessage from "./CardMessage";
 import Image from "next/image";
+import { useContext } from "react";
+import { NashCalculatorContext } from "../Context/NashCalculatorContext";
 
 const EarningsCard: React.FC = () => {
+	const { earnAavePair, setEarnAavePair, earnAnchorPair, setEarnAnchorPair } = useContext(NashCalculatorContext);
+
 	return (
-		<CardContainer title="Nash Earn" subheaderContent="Yearly TVL / APY" containerClasses="w-full sm:w-1/2">
+		<CardContainer title="Nash Earn" subheaderContent="Annual TVL / Fee" containerClasses="w-full sm:w-1/2">
 			<CardMessage>
 				Nash Earn is powered by a variety of DeFi protocols, namely Aave and Anchor, with more to come. The defaults
-				here aren&apos;t representative of current data.
+				here aren&apos;t representative of current data. The Nash fee is taken off of the raw APY that these protocols
+				offer.
 			</CardMessage>
 			<div className="flex flex-col space-y-4">
 				<div className="flex flex-col space-y-4">
@@ -23,14 +28,14 @@ const EarningsCard: React.FC = () => {
 								id="nash-earn-aave-tvl"
 								name="nash-earn-aave-tvl-input"
 								placeholder="Please enter a number"
-								value={100}
+								value={earnAavePair.tvl}
 								decimalsLimit={2}
 								prefix="$"
 								onValueChange={(value) => {
-									// setFiatGatewayPair((s) => ({
-									// 	...s,
-									// 	volume: value ?? "0",
-									// }));
+									setEarnAavePair((s) => ({
+										...s,
+										tvl: value ?? "0",
+									}));
 								}}
 								className="w-54 sm:w-full rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
 							/>
@@ -38,21 +43,21 @@ const EarningsCard: React.FC = () => {
 						<div className="flex flex-row sm:flex-col items-center sm:items-start justify-between sm:justify-start w-full sm:w-3/5 min-w-0">
 							<div className="text-blue-50 text-base space-x-1 font-bold flex items-center mb-0 sm:mb-1">
 								<Image src="/aave-logo.svg" alt="Aave Logo" width={30} height={30} title="Aave" />
-								<div>APY</div>
+								<div>Nash Fee</div>
 							</div>
 
 							<CurrencyInput
 								id="nash-earn-aave-apy"
 								name="nash-earn-aave-apy-input"
 								placeholder="Please enter a number"
-								value={100}
+								value={earnAavePair.fee}
 								decimalsLimit={2}
 								suffix="%"
 								onValueChange={(value) => {
-									// setFiatGatewayPair((s) => ({
-									// 	...s,
-									// 	volume: value ?? "0",
-									// }));
+									setEarnAavePair((s) => ({
+										...s,
+										fee: value ?? "0",
+									}));
 								}}
 								className="w-20 sm:w-full rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
 							/>
@@ -71,14 +76,14 @@ const EarningsCard: React.FC = () => {
 								id="nash-earn-anchor-tvl"
 								name="nash-earn-anchor-tvl-input"
 								placeholder="Please enter a number"
-								value={100}
+								value={earnAnchorPair.tvl}
 								decimalsLimit={2}
 								prefix="$"
 								onValueChange={(value) => {
-									// setFiatGatewayPair((s) => ({
-									// 	...s,
-									// 	volume: value ?? "0",
-									// }));
+									setEarnAnchorPair((s) => ({
+										...s,
+										tvl: value ?? "0",
+									}));
 								}}
 								className="w-54 sm:w-full rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
 							/>
@@ -86,20 +91,20 @@ const EarningsCard: React.FC = () => {
 						<div className="flex flex-row sm:flex-col items-center sm:items-start justify-between sm:justify-start w-full sm:w-3/5 min-w-0">
 							<div className="text-blue-50 text-base space-x-1 font-bold flex items-center mb-0 sm:mb-1">
 								<Image src="/anchor-logo.svg" alt="Anchor Logo" width={30} height={30} title="Anchor" />
-								<div>APY</div>
+								<div>Nash Fee</div>
 							</div>
 							<CurrencyInput
 								id="nash-earn-anchor-apy"
 								name="nash-earn-anchor-apy-input"
 								placeholder="Please enter a number"
-								value={100}
+								value={earnAnchorPair.fee}
 								decimalsLimit={2}
 								suffix="%"
 								onValueChange={(value) => {
-									// setFiatGatewayPair((s) => ({
-									// 	...s,
-									// 	volume: value ?? "0",
-									// }));
+									setEarnAnchorPair((s) => ({
+										...s,
+										fee: value ?? "0",
+									}));
 								}}
 								className="w-20 sm:w-full rounded-md p-1 focus:border-blue-100 text-base text-gray-700 opacity-90"
 							/>
